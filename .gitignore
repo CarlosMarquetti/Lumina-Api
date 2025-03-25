@@ -1,0 +1,58 @@
+# Arquivos e pastas específicos do .NET Core
+bin/
+obj/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
+
+# Arquivos de IDE
+.vs/
+.vscode/
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+
+# Arquivos de build
+*.dll
+*.exe
+*.pdb
+*.cache
+*.bak
+
+# Logs
+*.log
+*.logs
+
+# Arquivos de configuração local
+appsettings.Development.json
+appsettings.Production.json
+
+# Arquivos de dependências
+packages/
+node_modules/
+
+# Arquivos de publicação
+publish/
+PublishProfiles/
+
+# Arquivos de teste
+TestResults/
+
+# Arquivos de banco de dados
+*.mdf
+*.ldf
+*.ndf
+
+# Outros
+[Tt]emp/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
