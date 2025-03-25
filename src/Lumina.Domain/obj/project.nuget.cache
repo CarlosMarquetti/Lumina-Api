@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "FIzd4azPABY=",
+  "dgSpecHash": "J2aBZxIqQqM=",
   "success": true,
   "projectFilePath": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Carlo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.3\\microsoft.extensions.dependencyinjection.abstractions.9.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

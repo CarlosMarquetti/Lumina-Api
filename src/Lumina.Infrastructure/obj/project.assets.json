@@ -268,6 +268,9 @@
       "Lumina.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.3"
+        },
         "compile": {
           "bin/placeholder/Lumina.Domain.dll": {}
         },
