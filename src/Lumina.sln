@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.API", "Lumina.API\Lumina.API.csproj", "{44405EBB-3A98-40E0-B5E1-7E5D2C631FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Domain", "Lumina.Domain\Lumina.Domain.csproj", "{8936C8EF-BEF4-43AF-BFE0-4AB22AF4A805}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Infrastructure", "Lumina.Infrastructure\Lumina.Infrastructure.csproj", "{8203C8EA-F29D-454E-8C7A-4A964C525BE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44405EBB-3A98-40E0-B5E1-7E5D2C631FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44405EBB-3A98-40E0-B5E1-7E5D2C631FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44405EBB-3A98-40E0-B5E1-7E5D2C631FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44405EBB-3A98-40E0-B5E1-7E5D2C631FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8936C8EF-BEF4-43AF-BFE0-4AB22AF4A805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8936C8EF-BEF4-43AF-BFE0-4AB22AF4A805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8936C8EF-BEF4-43AF-BFE0-4AB22AF4A805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8936C8EF-BEF4-43AF-BFE0-4AB22AF4A805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8203C8EA-F29D-454E-8C7A-4A964C525BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8203C8EA-F29D-454E-8C7A-4A964C525BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8203C8EA-F29D-454E-8C7A-4A964C525BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8203C8EA-F29D-454E-8C7A-4A964C525BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
