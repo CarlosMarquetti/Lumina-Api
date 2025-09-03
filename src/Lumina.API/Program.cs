@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Lumina.Infrastructure.Data;
+using Lumina.Domain.Repository.Interfaces;
+using Lumina.Infrastructure.Repository;
 // using Lumina.Domain.Interfaces.Repositories;
 // using Lumina.Infrastructure.Repositories;
 // using Lumina.Domain.Services;
@@ -72,7 +74,11 @@ builder.Services.AddDbContext<LuminaDbContext>(options =>
     }
 });
 
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
+builder.Services.AddScoped<JwtService>();
+
 // Repository Registration
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 // builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 // builder.Services.AddScoped<IClientRepository, ClientRepository>();
 // builder.Services.AddScoped<IDesignerRepository, DesignerRepository>();

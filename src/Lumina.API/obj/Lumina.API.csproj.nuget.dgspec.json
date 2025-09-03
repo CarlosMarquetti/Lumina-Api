@@ -1,36 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.API\\Lumina.API.csproj": {}
+    "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.API\\Lumina.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.API\\Lumina.API.csproj": {
+    "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.API\\Lumina.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.API\\Lumina.API.csproj",
+        "projectUniqueName": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.API\\Lumina.API.csproj",
         "projectName": "Lumina.API",
-        "projectPath": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.API\\Lumina.API.csproj",
+        "projectPath": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.API\\Lumina.API.csproj",
         "packagesPath": "C:\\Users\\Carlo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.API\\obj\\",
+        "outputPath": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Carlo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj": {
-                "projectPath": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj"
+              "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj": {
+                "projectPath": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj"
               },
-              "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Infrastructure\\Lumina.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Infrastructure\\Lumina.Infrastructure.csproj"
+              "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Infrastructure\\Lumina.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Infrastructure\\Lumina.Infrastructure.csproj"
               }
             }
           }
@@ -43,31 +43,30 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[8.0.10, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[6.4.0, )"
             }
           },
           "imports": [
@@ -89,31 +88,31 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj": {
+    "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj",
         "projectName": "Lumina.Domain",
-        "projectPath": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj",
+        "projectPath": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj",
         "packagesPath": "C:\\Users\\Carlo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Carlo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -125,17 +124,24 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+            "AWSSDK.Extensions.NETCore.Setup": {
               "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[3.7.301, )"
+            },
+            "AWSSDK.S3": {
+              "target": "Package",
+              "version": "[3.7.412.2, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             }
           },
           "imports": [
@@ -154,34 +160,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Infrastructure\\Lumina.Infrastructure.csproj": {
+    "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Infrastructure\\Lumina.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Infrastructure\\Lumina.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Infrastructure\\Lumina.Infrastructure.csproj",
         "projectName": "Lumina.Infrastructure",
-        "projectPath": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Infrastructure\\Lumina.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Infrastructure\\Lumina.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Carlo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Carlo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj": {
-                "projectPath": "C:\\Users\\Carlo\\Github\\White\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj"
+              "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj": {
+                "projectPath": "C:\\Users\\Carlo\\Github\\tcc\\TCC-Api\\src\\Lumina.Domain\\Lumina.Domain.csproj"
               }
             }
           }
@@ -194,21 +200,62 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "AWSSDK.S3": {
               "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[3.7.412.2, )"
+            },
+            "AWSSDK.SimpleEmail": {
+              "target": "Package",
+              "version": "[3.7.402.2, )"
+            },
+            "BouncyCastle": {
+              "target": "Package",
+              "version": "[1.8.9, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[9.0.4, )"
+              "version": "[8.0.8, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.4.2, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[112.1.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.1.2, )"
             }
           },
           "imports": [
@@ -227,7 +274,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
