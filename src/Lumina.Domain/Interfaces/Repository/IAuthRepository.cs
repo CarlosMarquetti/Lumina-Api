@@ -7,9 +7,9 @@ namespace Lumina.Domain.Repository.Interfaces
 {
     public interface IAuthRepository
     {
-        Task<(bool, int)> RegisterUser(RegisterRequestDto registerDto, CancellationToken cancellationToken = default);
-        Task<LoginResponseDto> Login(LoginRequestDto loginDto, CancellationToken cancellationToken = default);
-        // Task<LoginResponseDto> AdminLogin(LoginRequestDto loginDto, CancellationToken cancellationToken = default);
-        // Task<bool> Logout(string userId);
+        Task<(bool, int)> RegisterClient(RegisterClientDto dto, CancellationToken cancellationToken = default);
+        Task<(bool, int)> RegisterDesigner(RegisterDesignerDto dto, CancellationToken cancellationToken = default);
+
+        Task<LoginResponseDto?> Login(LoginRequestDto dto, CancellationToken cancellationToken = default);
     }
 }

@@ -1,11 +1,11 @@
 using Lumina.Domain.Auth.DTOs;
-using Lumina.Domain.Repository.Interfaces;
+using Lumina.Domain.Entities;
+using Lumina.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using Microsoft.Extensions.Logging;
-using Lumina.Infrastructure.Data;
-using Lumina.Domain.Entities;
+using Lumina.Domain.Repository.Interfaces;
 
 namespace Lumina.Infrastructure.Repository
 {
@@ -26,157 +26,87 @@ namespace Lumina.Infrastructure.Repository
             _logger = logger;
         }
 
-        public async Task<(bool, int)> RegisterUser(RegisterRequestDto registerDto, CancellationToken cancellationToken = default)
+        public async Task<(bool, int)> RegisterClient(RegisterClientDto dto, CancellationToken cancellationToken = default)
         {
-            try
+            var exists = await _context.Clients
+                .AnyAsync(c => c.Email == dto.Email || c.Username == dto.Username, cancellationToken);
+
+            if (exists) return (false, 0);
+
+            var client = new Client
             {
-                var existingClient = await (
-                    from Client in _context.Clients
-                    where Client.Email == registerDto.Email || Client.Username == registerDto.Username
-                    select Client
-                ).AnyAsync(cancellationToken);
+                Username = dto.Username,
+                FullName = dto.FullName,
+                Email = dto.Email,
+                PasswordHash = HashPassword(dto.Password),
+                CpfCnpj = dto.CpfCnpj,
+                PhoneNumber = dto.PhoneNumber,
+                CreatedAt = DateTime.UtcNow
+            };
 
-                if (existingClient)
-                {
-                    _logger.LogWarning("Falha no registro: e-mail ou nome de usuário já existe.");
-                    return (false, 0);
-                }
+            _context.Clients.Add(client);
+            await _context.SaveChangesAsync(cancellationToken);
 
-                var client = new Client
-                {
-                    Username = registerDto.Username,
-                    FullName = registerDto.FullName,
-                    Email = registerDto.Email,
-                    PasswordHash = HashPassword(registerDto.Password),
-                    CpfCnpj = registerDto.CpfCnpj,
-                    PhoneNumber = registerDto.PhoneNumber,
-                    // Address = registerDto.Address,
-                    // City = registerDto.City,
-                    // State = registerDto.State,
-                    // ZipCode = registerDto.ZipCode,
-                    // CreatedAt = DateTime.Today.Date
-                };
-
-                _context.Clients.Add(client);
-                await _context.SaveChangesAsync(cancellationToken);
-
-                _logger.LogInformation("Usuário registrado com sucesso: {Email}", registerDto.Email);
-                return (true, client.Id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error registering user: {Email}", registerDto.Email);
-                throw;
-            }
+            return (true, client.Id);
         }
 
-
-        public async Task<LoginResponseDto> Login(LoginRequestDto loginDto, CancellationToken cancellationToken = default)
+        public async Task<(bool, int)> RegisterDesigner(RegisterDesignerDto dto, CancellationToken cancellationToken = default)
         {
-            try
+            var exists = await _context.Designers
+                .AnyAsync(d => d.Email == dto.Email || d.Username == dto.Username, cancellationToken);
+
+            if (exists) return (false, 0);
+
+            var designer = new Designer
             {
-                var user = await (
-                    from u in _context.Clients
-                    where u.Email == loginDto.UsernameOrEmail || u.Username == loginDto.UsernameOrEmail
-                    select u
-                ).FirstOrDefaultAsync(cancellationToken);
+                Username = dto.Username,
+                FullName = dto.FullName,
+                Email = dto.Email,
+                PasswordHash = HashPassword(dto.Password),
+                CpfCnpj = dto.CpfCnpj,
+                PhoneNumber = dto.PhoneNumber,
+                DateOfBirth = dto.DateOfBirth,
+                Address = dto.Address,
+                City = dto.City,
+                State = dto.State,
+                ZipCode = dto.ZipCode,
+                CreatedAt = DateTime.UtcNow
+            };
 
-                if (user == null || !VerifyPassword(loginDto.Password, user.PasswordHash))
-                {
-                    _logger.LogWarning("Falha ao tenta realizar o login: {UsernameOrEmail}", loginDto.UsernameOrEmail);
-                    return null;
-                }
+            _context.Designers.Add(designer);
+            await _context.SaveChangesAsync(cancellationToken);
 
-                var token = _jwtService.GenerateToken(user.Id.ToString(), user.FullName);
-
-                var response = new LoginResponseDto
-                {
-                    Id = user.Id,
-                    Token = token,
-                    FullName = user.FullName,
-                };
-
-                _logger.LogInformation("User logged in successfully: {UsernameOrEmail}", loginDto.UsernameOrEmail);
-                return response;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error during login for user: {UsernameOrEmail}", loginDto.UsernameOrEmail);
-                throw;
-            }
+            return (true, designer.Id);
         }
 
-        // public async Task<LoginResponseDto> AdminLogin(LoginRequestDto loginDto, CancellationToken cancellationToken = default)
-        // {
-        //     try
-        //     {
-        //         var admin = await (
-        //             from a in _context.Admins
-        //             where a.Email == loginDto.UsernameOrEmail || a.Username == loginDto.UsernameOrEmail
-        //             select a
-        //         ).FirstOrDefaultAsync(cancellationToken);
+        public async Task<LoginResponseDto?> Login(LoginRequestDto dto, CancellationToken cancellationToken = default)
+        {
+            var client = await _context.Clients
+                .FirstOrDefaultAsync(c => c.Email == dto.UsernameOrEmail || c.Username == dto.UsernameOrEmail, cancellationToken);
 
-        //         if (admin == null || !VerifyPassword(loginDto.Password, admin.PasswordHash))
-        //         {
-        //             _logger.LogWarning("Failed admin login attempt for: {UsernameOrEmail}", loginDto.UsernameOrEmail);
-        //             return null;
-        //         }
+            if (client != null && VerifyPassword(dto.Password, client.PasswordHash))
+            {
+                var token = _jwtService.GenerateToken(client.Id.ToString(), client.FullName, "Client");
+                return new LoginResponseDto { Id = client.Id, Token = token, FullName = client.FullName };
+            }
 
-        //         admin.LastAccessAt = DateTime.UtcNow;
-        //         await _context.SaveChangesAsync(cancellationToken);
+            var designer = await _context.Designers
+                .FirstOrDefaultAsync(d => d.Email == dto.UsernameOrEmail || d.Username == dto.UsernameOrEmail, cancellationToken);
 
-        //         var token = _jwtService.GenerateToken(admin.Id.ToString(), admin.FullName, EnRole.Admin.ToString());
+            if (designer != null && VerifyPassword(dto.Password, designer.PasswordHash))
+            {
+                var token = _jwtService.GenerateToken(designer.Id.ToString(), designer.FullName, "Designer");
+                return new LoginResponseDto { Id = designer.Id, Token = token, FullName = designer.FullName };
+            }
 
-        //         var response = new LoginResponseDto
-        //         {
-        //             Id = admin.Id,
-        //             Token = token,
-        //             FullName = admin.FullName,
-        //             Role = EnRole.Admin.ToString()
-        //         };
-
-        //         _logger.LogInformation("Admin logged in successfully: {UsernameOrEmail}", loginDto.UsernameOrEmail);
-        //         return response;
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         _logger.LogError(ex, "Error during admin login for: {UsernameOrEmail}", loginDto.UsernameOrEmail);
-        //         throw;
-        //     }
-        // }
-
-
-
-        // private string GenerateUniqueAffiliateCode()
-        // {
-        //     const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-        //     var random = new Random();
-
-        //     while (true)
-        //     {
-        //         var code = new string(Enumerable.Repeat(chars, 8)
-        //             .Select(s => s[random.Next(s.Length)]).ToArray());
-
-        //         var exists = (
-        //             from u in _context.Clients
-        //             where u.AffiliateCode == code
-        //             select u
-        //         ).Any();
-
-        //         if (!exists)
-        //         {
-        //             return code;
-        //         }
-        //     }
-        // }
+            return null;
+        }
 
         private string HashPassword(string password)
         {
             byte[] salt = new byte[SALT_SIZE];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(salt);
 
             string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                 password: password,
@@ -191,8 +121,7 @@ namespace Lumina.Infrastructure.Repository
         private bool VerifyPassword(string password, string storedHash)
         {
             var parts = storedHash.Split(':');
-            if (parts.Length != 2)
-                return false;
+            if (parts.Length != 2) return false;
 
             var salt = Convert.FromBase64String(parts[0]);
             var hash = parts[1];
